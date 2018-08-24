@@ -31,7 +31,8 @@ RUN python setup.py sdist
 RUN pip install dist/ydk*.gz
 
 WORKDIR ${INSTALLPATH}
-RUN git clone https://github.com/CiscoDevNet/yang-explorer.git
+RUN git clone https://github.com/rdkls/yang-explorer.git
+#RUN git clone https://github.com/CiscoDevNet/yang-explorer.git
 WORKDIR yang-explorer
 RUN virtualenv v
 RUN . v/bin/activate
