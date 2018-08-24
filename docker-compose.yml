@@ -2,5 +2,7 @@ version: '3.2'
 services:
   yang-explorer:
     build: .
+    #image: yang-explorer
+    #image: rdkls/yang-explorer
     ports:
       - 8000:8000
