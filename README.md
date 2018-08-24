@@ -4,6 +4,8 @@ Docker image for Cisco Yang Explorer https://github.com/CiscoDevNet/yang-explore
 
 Then visit http://localhost:8000
 
+The admin (http://localhost:8000/admin/) creds are admin:admin
+
 Note the UI is in Flash, so this needs to be installed/enabled
 
 Flash is very insecure and there are STILL zero-days out there so DO NOT INSTALL FOR/ENABLE FOR UNTRUSTED SITES
