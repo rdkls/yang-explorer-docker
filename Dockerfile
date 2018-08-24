@@ -3,17 +3,17 @@ ARG INSTALLPATH=/root
 EXPOSE 8000
 
 RUN apt-get update
-RUN apt-get install -y python2.7 python-pip python-virtualenv graphviz git libxml2-dev libxslt1-dev python-dev zlib1g-dev
-RUN pip install --upgrade pip
-RUN pip install setuptools virtualenv
-
-WORKDIR ${INSTALLPATH}
-RUN git clone https://github.com/CiscoDevNet/yang-explorer.git
-WORKDIR yang-explorer
-RUN virtualenv v
-RUN . v/bin/activate
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN apt-get install -y \
+        python2.7 \
+        python-pip \
+        python-virtualenv \
+        python-dev \
+        graphviz \
+        git \
+        libxml2-dev \
+        libxslt1-dev \
+        zlib1g-dev
+RUN pip install --upgrade pip setuptools virtualenv
 
 WORKDIR ${INSTALLPATH}
 RUN git clone https://github.com/CiscoDevNet/ydk-py.git -b yam
@@ -29,6 +29,14 @@ RUN pip install dist/ydk*.gz
 WORKDIR ../cisco-ios-xr
 RUN python setup.py sdist
 RUN pip install dist/ydk*.gz
+
+WORKDIR ${INSTALLPATH}
+RUN git clone https://github.com/CiscoDevNet/yang-explorer.git
+WORKDIR yang-explorer
+RUN virtualenv v
+RUN . v/bin/activate
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 WORKDIR ${INSTALLPATH}/yang-explorer/server
 RUN mkdir -p data/users
